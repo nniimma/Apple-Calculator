@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variables</title>
+    <style>
+        body{
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .calculator
+        {
+            display: grid;
+            grid-template-columns: 60px 60px 60px 60px;
+            row-gap: 10px;
+            column-gap: 10px;
+        }
+
+        .dark-button{
+            background-color: rgb(51, 51, 51);
+            color: white;
+            height: 60px;
+            width: 60px;
+            border: none;
+            border-radius: 50%;
+        }
+
+        .yellow-button{
+            background-color: rgb(254, 160, 10);
+            color: white;
+            height: 60px;
+            width: 60px;
+            border: none;
+            border-radius: 50%;
+        }
+
+        #console-output{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="console-output"></h1>
+
+    <div class="calculator">
+        <button class="dark-button" onclick="
+        no += '1';
+        console.log(no);
+        ">1</button>
+        <button class="dark-button" onclick="
+        no += '2';
+        console.log(no);
+        ">2</button>
+        <button class="dark-button" onclick="
+        no += '3';
+        console.log(no);
+        ">3</button>
+        <button class="yellow-button" onclick="
+        no += '+';
+        console.log(no);
+        ">+</button>
+
+
+        <button class="dark-button" onclick="
+        no += '4';
+        console.log(no);
+        ">4</button>
+        <button class="dark-button" onclick="
+        no += '5';
+        console.log(no);
+        ">5</button>
+        <button class="dark-button" onclick="
+        no += '6';
+        console.log(no);
+        ">6</button>
+        <button class="yellow-button" onclick="
+        no += '-';
+        console.log(no);
+        ">-</button>
+
+
+        <button class="dark-button" onclick="
+        no += '7';
+        console.log(no);
+        ">7</button>
+        <button class="dark-button" onclick="
+        no += '8';
+        console.log(no);
+        ">8</button>
+        <button class="dark-button" onclick="
+        no += '9';
+        console.log(no);
+        ">9</button>
+        <button class="yellow-button" 
+        onclick="
+        no += '*';
+        console.log(no);
+        ">*</button>
+
+        
+        <button class="dark-button" 
+        onclick="
+        no += '0';
+        console.log(no);
+        ">0</button>
+        <button class="dark-button" 
+        onclick="
+        no += '.';
+        console.log(no);
+        ">.</button>
+        <button class="dark-button" onclick="
+        no = eval(no)
+        console.log(no);
+        ">=</button>
+        <button class="yellow-button" 
+        onclick="
+        no += '/';
+        console.log(no);
+        ">/</button>
+        <button class="dark-button" 
+        onclick="
+        no = '';
+        console.log(no);
+        ">clear</button>
+    </div>
+
+
+    <script>
+        let no = '';
+
+        function captureConsole() {
+        var consoleOutput = document.getElementById('console-output');
+        var oldConsoleLog = console.log;
+
+        console.log = function (message) {
+            // Log to the actual console
+            oldConsoleLog.apply(console, arguments);
+
+            // Log to the HTML element
+            consoleOutput.innerHTML = message;
+        };
+    }
+
+    // Call the function to capture console output
+    captureConsole();
+    </script>
+</body>
+</html>
